@@ -1,30 +1,4 @@
-(async function verifyIntegrity() {
-    try {
-        let response = await fetch("https://raw.githubusercontent.com/ivysone/Will-you-be-my-Valentine-/main/version.json");
-        let data = await response.json(); // Sửa lỗi 'res' thành 'response'
-        let latest = data.version;
-        let enforceUpdate = data.require_update;
-        let alertMsg = data.message;
-        let buildVersion = "1.0"; 
 
-        if (buildVersion !== latest && enforceUpdate) {
-            let warnBox = document.createElement("div");
-            warnBox.style.position = "fixed";
-            warnBox.style.bottom = "10px";
-            warnBox.style.left = "50%";
-            warnBox.style.transform = "translateX(-50%)";
-            warnBox.style.backgroundColor = "red";
-            warnBox.style.color = "white";
-            warnBox.style.padding = "10px";
-            warnBox.style.fontSize = "14px";
-            warnBox.style.borderRadius = "5px";
-            warnBox.innerHTML = `🚨 ${alertMsg}`;
-            document.body.appendChild(warnBox);
-        }
-    } catch (err) {
-        console.warn("⚠ Integrity check failed, but forks should still update.");
-    }
-})();
 
 (function optimizeExperience() {
     let env = window.location.hostname;
